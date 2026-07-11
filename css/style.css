@@ -1,0 +1,138 @@
+:root {
+    /* Paleta suave, baseada na identidade azul do AutiFlow */
+    --color-bg: #EAF3FB;          /* fundo geral, azul bem claro */
+    --color-surface: #FFFFFF;     /* fundo da navbar */
+    --color-primary: #4A90D9;     /* azul principal */
+    --color-primary-dark: #2F6BB0;/* azul para textos/hover */
+    --color-text: #1F3A5F;        /* texto principal, contraste alto */
+    --color-active-bg: #D7E9FA;   /* fundo do item ativo */
+    --color-focus: #F2A93B;       /* âmbar, alto contraste p/ foco */
+    --font-display: 'Quicksand', sans-serif;
+    --font-body: 'Atkinson Hyperlegible', sans-serif;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    font-family: var(--font-body);
+    color: var(--color-text);
+    font-size: 18px; /* base maior, mais fácil de ler */
+    line-height: 1.5;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--color-focus);
+    color: var(--color-text);
+    padding: 10px 16px;
+    border-radius: 0 0 8px 0;
+    z-index: 100;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+
+  .header-initial {
+    background: var(--color-surface);
+    border-bottom: 3px solid var(--color-active-bg);
+    padding: 14px 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+  }
+  .logo-icon { font-size: 1.6rem; }
+
+  .nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 700;
+    padding: 12px 18px;       
+    min-height: 44px;
+    border-radius: var(--radius);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .nav-item span[aria-hidden] { font-size: 1.2rem; }
+
+  .nav-item:hover {
+    background: var(--color-active-bg);
+  }
+
+  .nav-item.active {
+    background: var(--color-active-bg);
+    color: var(--color-primary-dark);
+  }
+
+  /* Foco visível, alto contraste — nunca usar outline: none */
+  .nav-item:focus-visible,
+  .skip-link:focus-visible,
+  .menu-toggle:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: var(--color-active-bg);
+    border: none;
+    border-radius: var(--radius);
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--color-primary-dark);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-item { transition: none; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { width: 100%; }
+    .nav-links ul {
+      flex-direction: column;
+      display: none;
+    }
+    .nav-links.open ul { display: flex; }
+    .menu-toggle { display: block; }
+    .container { justify-content: space-between; }
+  }
+
+  main { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
