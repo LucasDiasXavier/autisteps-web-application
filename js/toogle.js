@@ -1,28 +1,32 @@
-    const toggle = document.getElementById('menuToggle');
-    const nav = document.getElementById('navLinks');
+function iniciarMenu() {
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("navLinks");
 
-   toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen);
-      toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
-});
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
 
-document.addEventListener('DOMContentLoaded', function () {
-  const navItems = document.querySelectorAll('.nav-item');
+      toggle.setAttribute("aria-expanded", isOpen);
+      toggle.setAttribute(
+        "aria-label",
+        isOpen ? "Fechar menu" : "Abrir menu"
+      );
+    });
+  }
+
+  const navItems = document.querySelectorAll(".nav-item");
 
   navItems.forEach((item) => {
-    item.addEventListener('click', function (event) {
+    item.addEventListener("click", function (event) {
       event.preventDefault();
 
-      // Remove a classe e o atributo de todos os itens
-      navItems.forEach((nav) => {
-        nav.classList.remove('active');
-        nav.removeAttribute('aria-current');
+      navItems.forEach((navItem) => {
+        navItem.classList.remove("active");
+        navItem.removeAttribute("aria-current");
       });
 
-      // Adiciona a classe e o atributo apenas no item clicado
-      this.classList.add('active');
-      this.setAttribute('aria-current', 'page');
+      this.classList.add("active");
+      this.setAttribute("aria-current", "page");
     });
   });
-});
+}

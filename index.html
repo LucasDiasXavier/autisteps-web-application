@@ -1,59 +1,28 @@
-<!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <title>AutiSteps</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <body>
-    <header class="header-initial">
-      <div class="container">
-        <div class="logo">
-          <span class="logo-icon" aria-hidden="true">🧩</span>
-          <span>AutiSteps</span>
-        </div>
+  <link rel="stylesheet" href="./css/style.css">
 
-        <button
-          class="menu-toggle"
-          id="menuToggle"
-          aria-label="Abrir menu"
-          aria-expanded="false"
-          aria-controls="navLinks"
-        >
-          ☰
-        </button>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-        <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
-          <ul>
-            <li>
-              <a href="#" class="nav-item active" aria-current="page">
-                <i class="fa-solid fa-house" aria-hidden="true"></i>
-                <span>Início</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-item">
-                <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
-                <span>Minha Rotina</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-item">
-                <i class="fa-solid fa-face-smile" aria-hidden="true"></i>
-                <span>Emoções</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+  <title>AutiSteps</title>
+</head>
 
-    <script src="./js/toogle.js"></script>
-  </body>
+<body>
+
+  <div id="header-component"></div>
+
+  <main id="main">
+    <h1 class="visually-hidden">Minhas tarefas</h1>
+
+    <div id="tabs-component"></div>
+  </main>
+
+  <script src="./js/loadComponents.js"></script>
+  <script src="./js/toogle.js"></script>
+
+</body>
 </html>
