@@ -14,7 +14,7 @@ function iniciarMenu() {
     });
   }
 
-  const navItems = document.querySelectorAll(".nav-item");
+    const navItems = document.querySelectorAll(".nav-item");
 
   navItems.forEach((item) => {
     item.addEventListener("click", function (event) {
@@ -29,4 +29,5 @@ function iniciarMenu() {
       this.setAttribute("aria-current", "page");
     });
   });
+  
 }

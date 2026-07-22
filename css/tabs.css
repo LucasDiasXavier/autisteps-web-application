@@ -1,0 +1,32 @@
+.period-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.period-tab {
+  flex: 1 1 140px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-active-bg);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 56px;
+}
+
+.period-tab[aria-selected="true"] {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}

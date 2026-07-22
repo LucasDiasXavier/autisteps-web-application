@@ -1,0 +1,37 @@
+:root {
+  --color-bg: #EAF3FB;
+  --color-surface: #FFFFFF;
+  --color-primary: #4A90D9;
+  --color-primary-dark: #2F6BB0;
+  --color-text: #1F3A5F;
+  --color-active-bg: #D7E9FA;
+  --color-focus: #F2A93B;
+
+  --color-success: #4CAF50;
+  --color-text-soft: #5F718C;
+
+  --font-display: 'Quicksand', sans-serif;
+  --font-body: 'Atkinson Hyperlegible', sans-serif;
+
+  --radius: 14px;
+  --radius-lg: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}

@@ -29,5 +29,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     "./components/tabs.html"
   );
 
+  await loadComponent(
+  "progress-component",
+  "./components/progress.html"
+);
+
+
   iniciarMenu();
 });
