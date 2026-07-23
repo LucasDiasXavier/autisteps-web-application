@@ -34,6 +34,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   "./components/progress.html"
 );
 
+  await loadComponent(
+    "activities-component",
+    "./components/activities.html"
+  );
 
   iniciarMenu();
+  iniciarRotina();
 });
