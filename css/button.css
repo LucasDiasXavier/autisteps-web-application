@@ -1,0 +1,23 @@
+.add-task-area {
+  margin-bottom: 16px;
+}
+
+.add-task-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-active-bg);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  min-height: 44px;
+  justify-content: center;
+}
+
+.add-task-btn:hover {
+  background: var(--color-active-bg);
+}
