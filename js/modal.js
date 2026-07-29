@@ -1,51 +1,28 @@
-// modal.js
+import { rotina, getPeriodoAtual, renderActivities, updateProgress } from './routine.js';
 
-/**
- * Função responsável por criar o card da tarefa no DOM
- * com a estrutura e classes idênticas aos cards fictícios.
- */
 function adicionarTarefaNaLista(titulo, descricao) {
-  const activityList = document.getElementById("activityList");
+  const periodoAtual = getPeriodoAtual(); // sempre pega o período certo, mesmo após trocar de aba
 
-  if (!activityList) {
-    console.error("Elemento '#activityList' não foi encontrado na página.");
-    return;
-  }
+  rotina[periodoAtual].push({
+    icon: '📝',       // ícone padrão para tarefas criadas pelo usuário
+    name: titulo,
+    done: false,
+    // description: descricao,
+    // ⚠️ o renderActivities() atual não exibe "description" no card.
+    // Se quiser mostrar a descrição, é preciso adicionar isso no template
+    // do <li> dentro de renderActivities() (no rotina.js).
+  });
 
-  // 1. Cria o item da lista (<li>) principal
-  const li = document.createElement("li");
-  li.classList.add("activity-item");
-
-  // 2. Estrutura de classes compatível com a estilização dos seus cards
-  li.innerHTML = `
-    <div class="activity-content">
-      <h3 class="activity-title">${titulo}</h3>
-      ${descricao ? `<p class="activity-description">${descricao}</p>` : ''}
-    </div>
-    <div class="activity-actions">
-      <button class="delete-btn" type="button" aria-label="Excluir tarefa">
-        <i class="fa-solid fa-trash" aria-hidden="true"></i>
-      </button>
-    </div>
-  `;
-
-  // 3. Associa o evento de remoção à lixeira do novo card
-  const deleteBtn = li.querySelector(".delete-btn");
-  if (deleteBtn) {
-    deleteBtn.addEventListener("click", () => {
-      li.remove();
-    });
-  }
-
-  // 4. Insere a nova tarefa no topo da <ul id="activityList"> junto com os cards existentes
-  activityList.prepend(li);
+  renderActivities(); // redesenha a lista inteira, já com o mesmo estilo dos outros cards
+  updateProgress();   // atualiza a barra de progresso com o novo total
 }
 
 /**
  * Módulo principal de controle do Modal (SweetAlert2)
  */
 export function iniciarModal() {
-  // Delegação de eventos: funciona perfeitamente independente de renderização assíncrona
+  // Delegação de eventos: funciona mesmo que o botão seja
+  // renderizado depois (ex: componente carregado via fetch/innerHTML)
   document.addEventListener("click", (event) => {
     const btn = event.target.closest("#addTaskBtn");
 
@@ -83,7 +60,7 @@ export function iniciarModal() {
       if (result.isConfirmed) {
         const { title, desc } = result.value;
 
-        // Renderiza e insere a tarefa junto com as fictícias na <ul id="activityList">
+        // Junta a tarefa nova com o "banco de dados" (rotina) e redesenha
         adicionarTarefaNaLista(title, desc);
 
         // Feedback de confirmação rápida

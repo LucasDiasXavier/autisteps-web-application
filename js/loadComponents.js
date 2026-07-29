@@ -1,3 +1,5 @@
+import { iniciarRotina } from './routine.js';
+import { iniciarModal } from './modal.js';
 async function loadComponent(id, file) {
   const response = await fetch(file);
   const html = await response.text();
@@ -30,15 +32,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
 
   await loadComponent(
-  "progress-component",
-  "./components/progress.html"
-);
+    "progress-component",
+    "./components/progress.html"
+  );
 
   await loadComponent(
     "activities-component",
     "./components/activities.html"
   );
 
-  iniciarMenu();
-  iniciarRotina();
+  await loadComponent(
+    "modal-component",
+    "./components/modal.html"
+  );
+
+  iniciarMenu();     
+  iniciarRotina();   
+  iniciarModal();    
 });

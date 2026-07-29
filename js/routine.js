@@ -1,4 +1,8 @@
-const rotina = {
+// rotina.js
+// ⚠️ Se o seu arquivo principal tiver outro nome (ex: app.js, main.js),
+// ajuste o caminho no "import" lá no modal.js para bater com esse nome.
+
+export const rotina = {
   manha: [
     { icon: '🦷', name: 'Escovar os dentes', done: false },
     { icon: '👕', name: 'Se vestir', done: false },
@@ -19,16 +23,29 @@ const rotina = {
 };
 
 const periodLabels = { manha: 'da manhã', tarde: 'da tarde', noite: 'da noite' };
-let periodoAtual = 'manha';
+
+// Guardamos periodoAtual dentro de um objeto (em vez de uma variável solta)
+// justamente para o modal.js conseguir ler sempre o valor mais atual,
+// mesmo depois de trocar de aba. Reatribuir uma variável "let" exportada
+// nem sempre propaga corretamente entre módulos.
+const estado = {
+  periodoAtual: 'manha',
+};
+
+// Função exportada para o modal.js (ou qualquer outro arquivo) sempre
+// pegar o período correto no momento em que a tarefa for criada.
+export function getPeriodoAtual() {
+  return estado.periodoAtual;
+}
 
 // Desenha a lista de atividades do período atual.
 // Regra de ordem: só a próxima atividade pendente pode ser marcada;
 // as que vêm depois ficam bloqueadas (cadeado) até chegar a vez delas.
-function renderActivities() {
+export function renderActivities() {
   const activityList = document.getElementById('activityList');
   if (!activityList) return; // componente ainda não está no DOM
 
-  const atividades = rotina[periodoAtual];
+  const atividades = rotina[estado.periodoAtual];
   activityList.innerHTML = '';
 
   const proximoIndex = atividades.findIndex(a => !a.done);
@@ -77,33 +94,33 @@ function renderActivities() {
 }
 
 // Atualiza a barra de progresso e o texto ("X de Y") do período atual.
-function updateProgress() {
+export function updateProgress() {
   const progressFill = document.getElementById('progressFill');
   const progressText = document.getElementById('progressText');
   const progressLabel = document.querySelector('.progress-label span:first-child');
   if (!progressFill) return; // componente ainda não está no DOM
 
-  const atividades = rotina[periodoAtual];
+  const atividades = rotina[estado.periodoAtual];
   const total = atividades.length;
   const concluidas = atividades.filter(a => a.done).length;
   const percentual = total === 0 ? 0 : Math.round((concluidas / total) * 100);
 
   progressFill.style.width = percentual + '%';
   progressText.textContent = `${concluidas} de ${total}`;
-  progressLabel.textContent = `Progresso ${periodLabels[periodoAtual]}`;
+  progressLabel.textContent = `Progresso ${periodLabels[estado.periodoAtual]}`;
 }
 
 // Liga os eventos de clique nas abas e faz a primeira renderização.
 // Chamar isso só depois que tabs-component, progress-component e
 // activities-component já foram injetados no DOM.
-function iniciarRotina() {
+export function iniciarRotina() {
   const tabs = document.querySelectorAll('.period-tab');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
       tab.setAttribute('aria-selected', 'true');
-      periodoAtual = tab.dataset.period;
+      estado.periodoAtual = tab.dataset.period;
       renderActivities();
       updateProgress();
     });
