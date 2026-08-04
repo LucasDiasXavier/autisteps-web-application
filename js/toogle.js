@@ -29,5 +29,6 @@ function iniciarMenu() {
       this.setAttribute("aria-current", "page");
     });
   });
-  
+
 }
+

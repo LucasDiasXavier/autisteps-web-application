@@ -8,6 +8,9 @@
   --color-focus: #F2A93B;
 
   --color-success: #4CAF50;
+  --color-success-bg: #E6F4E6;
+  --color-danger: #D64545;
+  --color-danger-bg: #FBEAEA;
   --color-text-soft: #5F718C;
 
   --font-display: 'Quicksand', sans-serif;

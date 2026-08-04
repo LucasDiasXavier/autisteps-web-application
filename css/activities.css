@@ -81,3 +81,26 @@
     position: absolute; width: 1px; height: 1px;
     overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
   }
+
+  .delete-btn {
+  border: 2px solid var(--color-danger-bg);
+  background: var(--color-surface);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--color-danger);
+  flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.delete-btn:hover,
+.delete-btn:focus-visible {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+.activity-card.done .delete-btn {
+  opacity: 0.5;
+}

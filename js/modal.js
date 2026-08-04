@@ -1,4 +1,6 @@
-import { rotina, getPeriodoAtual, renderActivities, updateProgress } from './routine.js';
+import { rotina, getPeriodoAtual, salvarRotina } from './routine-data.js';
+import { renderActivities } from './routine-activities.js';
+import { updateProgress } from './routine-progress.js';
 
 function adicionarTarefaNaLista(titulo, descricao) {
   const periodoAtual = getPeriodoAtual(); // sempre pega o período certo, mesmo após trocar de aba
@@ -7,12 +9,14 @@ function adicionarTarefaNaLista(titulo, descricao) {
     icon: '📝',       // ícone padrão para tarefas criadas pelo usuário
     name: titulo,
     done: false,
+    custom: true,     // marca essa tarefa como criada pelo usuário → pode ser excluída
     // description: descricao,
     // ⚠️ o renderActivities() atual não exibe "description" no card.
     // Se quiser mostrar a descrição, é preciso adicionar isso no template
-    // do <li> dentro de renderActivities() (no rotina.js).
+    // do <li> dentro de renderActivities() (no routine-activities.js).
   });
 
+  salvarRotina();     // grava o estado atualizado no localStorage
   renderActivities(); // redesenha a lista inteira, já com o mesmo estilo dos outros cards
   updateProgress();   // atualiza a barra de progresso com o novo total
 }
