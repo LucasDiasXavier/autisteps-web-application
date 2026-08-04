@@ -66,28 +66,42 @@ Permitindo uma visualização clara e objetiva da rotina.
 ## 🏗️ Estrutura do Projeto
 
 ```text
-autisteps/
+autisteps-web-application/
 │
 ├── index.html
+├── README.md
 │
 ├── components/
+│   ├── activities.html
 │   ├── header.html
+│   ├── home.html
+│   ├── modal.html
 │   ├── navigation.html
+│   ├── progress.html
 │   └── tabs.html
 │
 ├── css/
-│   └── style.css
+│   ├── activities.css
+│   ├── base.css
+│   ├── button.css
+│   ├── header.css
+│   ├── home.css
+│   ├── modal.css
+│   ├── navigation.css
+│   ├── progress.css
+│   ├── style.css
+│   └── tabs.css
 │
-├── js/
-│   ├── loadComponents.js
-│   ├── toggle.js
-│   └── tabs.js
-│
-└── assets/
-    ├── images/
-    └── icons/
-```
-
+└── js/
+    ├── activities.js
+    ├── loadComponents.js
+    ├── modal.js
+    ├── routine.js
+    ├── routine-data.js
+    ├── routine-activities.js
+    ├── routine-progress.js
+    ├── routine-tabs.js
+    └── toogle.js
 ---
 
 ## 🚀 Como Executar
