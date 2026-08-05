@@ -1,5 +1,3 @@
-// 
-
 export { getPeriodoAtual } from './routine-data.js';
 
 import { renderActivities } from './routine-activities.js';

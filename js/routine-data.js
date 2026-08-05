@@ -1,5 +1,3 @@
-// 
-
 const STORAGE_KEY = 'autisteps-rotina';
 
 const rotinaPadrao = {
